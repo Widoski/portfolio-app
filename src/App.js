@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Grid, Dialog, DialogContent, Snackbar, LinearProgress } from '@material-ui/core';
+import { Grid, Dialog, DialogContent, Snackbar } from '@material-ui/core';
 import AppContext from './AppContext';
 import PrimarySection from './components/PrimarySection';
 import AboutSection from './components/AboutSection';
@@ -23,15 +23,10 @@ function Alert(props) {
 };
 
 export default function App() {
-    const [openLinear, setOpenLinear] = useState(false);
     const [openModal, setOpenModal] = useState({
         status: false,
         fileToShow: ''
     })
-
-    const handleOpenLinear = (boolean) => {
-        setOpenLinear(boolean);
-    }
 
     const handleOpenModal = (status, fileToShow) => {
         setOpenModal({
@@ -70,7 +65,6 @@ export default function App() {
             <AppContext.Provider
                 value={{
                     handleOpenModal,
-                    handleOpenLinear,
                     handleOpenSnackbar
                 }}
             >
@@ -110,11 +104,6 @@ export default function App() {
                                 {alert.message}
                             </Alert>
                         </Snackbar>
-                    ) : null
-                }
-                {
-                    openLinear ? (
-                        <LinearProgress color="secondary" />
                     ) : null
                 }
             </AppContext.Provider >

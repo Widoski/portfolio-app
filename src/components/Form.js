@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, TextField, Grid } from '@material-ui/core';
+import { Button, TextField, Grid, LinearProgress } from '@material-ui/core';
 import emailjs from 'emailjs-com';
 import AppContext from '../AppContext';
 
@@ -12,8 +12,9 @@ const styles = {
 };
 
 export default function Form() {
-
 	const context = useContext(AppContext);
+
+	const [openLinear, setOpenLinear] = useState(false);
 
 	const [formData, setFormData] = useState({
 		name: "",
@@ -34,11 +35,11 @@ export default function Form() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		context.handleOpenLinear(true);
+		setOpenLinear(true);
 
 		emailjs.send('gmail', 'gmail_ID', formData, 'user_Sh3DIijVkb9WcVD8fiYIS')
 			.then(res => {
-				context.handleOpenLinear(false);
+				setOpenLinear(false);
 				context.handleOpenSnackbar(true, 'success', '¡Thanks for email me! I `ll get in touch as soon as posible')
 				setFormData({
 					...formData,
@@ -47,7 +48,7 @@ export default function Form() {
 				});
 			})
 			.catch(err => {
-				context.handleOpenLinear(false);
+				setOpenLinear(false);
 				context.handleOpenSnackbar(true, 'error', 'Failed. Please, try again');
 			})
 	}
@@ -80,6 +81,11 @@ export default function Form() {
 				/>
 				<br />
 				<Button type="submit" variant="contained" fullWidth color="secondary">Send</Button>
+				{
+					openLinear ? (
+						<LinearProgress color="secondary" />
+					) : null
+				}
 			</form>
 		</Grid>
 	)
