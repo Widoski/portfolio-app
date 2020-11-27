@@ -53,7 +53,9 @@ export default function Form() {
 			})
 	}
 	return (
-		<Grid item xs={12} sm={6} xl={6} style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: 20, paddingTop: 20 }}>
+		<Grid
+			id="contact"
+			item xs={12} sm={6} xl={6} style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: 20, paddingTop: 20 }}>
 			<form onSubmit={handleSubmit} style={styles.form}>
 				<TextField
 					name="name"

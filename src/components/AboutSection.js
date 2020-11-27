@@ -14,7 +14,9 @@ const styles = {
 
 export default function AboutSection() {
     return (
-        <Grid container item xs={12} style={styles.about}>
+        <Grid
+            id="about"
+            container item xs={12} style={styles.about}>
             <Grid item xs={12} sm={9} xl={9}>
                 <Typography variant="h5" style={{ paddingBottom: 40, fontWeight: "bold", letterSpacing: 5 }}>
                     LET ME TELL YOU ABOUT ME
