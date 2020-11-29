@@ -24,14 +24,14 @@ function Alert(props) {
 
 export default function App() {
     const [openModal, setOpenModal] = useState({
-        status: false,
+        state: false,
         fileToShow: ''
     })
 
-    const handleOpenModal = (status, fileToShow) => {
+    const handleOpenModal = (state, fileToShow) => {
         setOpenModal({
             ...openModal,
-            status,
+            state,
             fileToShow
         })
     }
@@ -79,11 +79,12 @@ export default function App() {
                     <Footer />
                 </Grid >
                 {
-                    openModal.status ? (
+                    openModal.state ? (
                         <Dialog
-                            open={openModal.status}
+                            open={openModal.state}
                             keepMounted
-                            onClose={() => setOpenModal({ ...openModal, status: false, fileToShow: '' })}
+                            onClose={() => setOpenModal({ ...openModal, state: false, fileToShow: '' })}
+                            maxWidth="md"
                         >
                             <DialogContent>
                                 <img alt="" style={{ width: "100%" }} src={openModal.fileToShow} />

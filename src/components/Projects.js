@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Grid, AppBar } from '@material-ui/core';
+import { Tabs, Tab, Grid, AppBar, Button } from '@material-ui/core';
+import Website from './MyWebsiteCarousel.js';
+import System from './SystemCarousel.js';
 
-export default function TabPanel() {
+export default function TabPanel(props) {
     const [value, setValue] = useState(0);
 
     const handleChange = (e, id) => {
@@ -12,12 +14,24 @@ export default function TabPanel() {
         <Grid item xs={12} style={{ background: "white" }}>
             <AppBar position="static" style={{ backgroundColor: "#102641" }}>
                 <Tabs value={value} onChange={handleChange} centered={true}>
-                    <Tab label="System" value={0} />
-                    <Tab label="My Portfolio" value={1} />
+                    <Tab label="Project 1" value={0} />
+                    <Tab label="Project 2" value={1} />
                 </Tabs>
             </AppBar>
-            <Projects value={value} id={0}>System</Projects>
-            <Projects value={value} id={1}>Portfolio</Projects>
+            <Projects value={value} id={0}>
+                <System />
+            </Projects>
+            <Projects value={value} id={1}>
+                <Website />
+            </Projects>
+            <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={() => props.showProjects(false)}
+            >
+                Go back
+                </Button>
         </Grid>
     )
 }

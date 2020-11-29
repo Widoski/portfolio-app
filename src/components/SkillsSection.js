@@ -16,8 +16,7 @@ const styles = {
 }
 
 export default function SkillsSection() {
-
-    const [proyects, setProyects] = useState(false);
+    const [projects, setProjects] = useState(false);
 
     const [backgroundColor, setBackgroundColor] = useState(false);
 
@@ -28,8 +27,8 @@ export default function SkillsSection() {
         icon: ''
     });
 
-    const showProyects = () => {
-        setProyects(true);
+    const showProjects = (boolean) => {
+        setProjects(boolean);
     }
 
     return (
@@ -37,8 +36,8 @@ export default function SkillsSection() {
             id="skills"
             container item xs={12} style={styles.skills}>
             {
-                proyects ? (
-                    <Projects />
+                projects ? (
+                    <Projects showProjects={showProjects} />
                 ) : <>
                         <Grid item xs={12} sm={6} xl={6} style={{ margin: 10 }}>
                             <Accordion style={{ backgroundColor: "#102641" }}>
@@ -161,7 +160,7 @@ export default function SkillsSection() {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={() => showProyects()}
+                                        onClick={() => showProjects(true)}
                                     >
                                         Click here
                                     </Button>
