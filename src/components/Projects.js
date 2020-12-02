@@ -11,9 +11,9 @@ export default function TabPanel(props) {
     }
 
     return (
-        <Grid item xs={12} style={{ background: "white" }}>
-            <AppBar position="static" style={{ backgroundColor: "#102641" }}>
-                <Tabs value={value} onChange={handleChange} centered={true}>
+        <Grid item xs={12} style={{ background: "#f5f5f5" }}>
+            <AppBar position="static" color="primary">
+                <Tabs value={value} onChange={handleChange} centered={true} indicatorColor="inherit">
                     <Tab label="Project 1" value={0} />
                     <Tab label="Project 2" value={1} />
                 </Tabs>
@@ -22,7 +22,7 @@ export default function TabPanel(props) {
                 <System />
                 <ButtonGroup variant="contained" color="primary" fullWidth>
                     <Button
-                        onClick={() => console.log('anda')}
+                        onClick={() => window.open("https://github.com/Widoski/system-app")}
                     >
                         Github
                 </Button>
@@ -35,22 +35,19 @@ export default function TabPanel(props) {
             </Projects>
             <Projects value={value} id={1}>
                 <Website />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => console.log('anda')}
-                >
-                    Github
+                <ButtonGroup variant="contained" color="primary" fullWidth>
+                    <Button
+                        onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
+                    >
+                        Github
                 </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => props.showProjects(false)}
-                >
-                    Go back
+                    <Button
+                        onClick={() => props.showProjects(false)}
+                    >
+                        Go back
                 </Button>
+                </ButtonGroup>
             </Projects>
-
         </Grid>
     )
 }
@@ -62,7 +59,7 @@ function Projects(props) {
         <>
             {
                 value === id ? (
-                    <Grid container item xs={12} style={{ background: "white" }}>
+                    <Grid container item xs={12}>
                         {children}
                     </Grid>
                 ) : null

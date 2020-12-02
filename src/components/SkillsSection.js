@@ -8,7 +8,7 @@ import Projects from './Projects';
 const styles = {
     skills: {
         backgroundColor: "#f1f1f1",
-        padding: 70
+        padding: 60
     },
     accordion: {
         backgroundColor: "#282726",

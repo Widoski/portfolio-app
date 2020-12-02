@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Button, Grid, ButtonGroup } from '@material-ui/core';
+import { Typography, Button, Grid, ButtonGroup, Paper } from '@material-ui/core';
 import '../Animations.css';
 import dash from '../img/dash.png';
 import events from '../img/events.png';
@@ -95,30 +95,25 @@ export default function SystemCarousel() {
     }
 
     return (
-
-
-        <Grid item xs={12} style={{ display: "flex" }}>
-            <Grid item xs={1}>
+        <Grid item xs={12}>
+            <div item style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
                     onClick={() => previousImage(image.id)}
+                    style={{ height: 60, borderRadius: "60%" }}
                 >
                     <ArrowLeftIcon />
                 </Button>
-            </Grid>
-
-            <Grid xs={8}>
-                <img src={image.img} style={{ width: "100%" }} />
-            </Grid>
-
-            <Grid item xs={1}>
+                <div style={{ width: "100%", backgroundColor: "white" }} >
+                    <img src={image.img} style={{ width: "100%" }} />
+                </div>
                 <Button
                     onClick={() => nextImage(image.id)}
+                    style={{ height: 60, borderRadius: "60%" }}
                 >
                     <ArrowRightIcon />
                 </Button>
-            </Grid>
+            </div>
         </Grid>
-
     )
 }
 
