@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Typography, Grid, Tooltip } from '@material-ui/core';
-import AppContext from '../AppContext';
+import React, { useState } from 'react';
+import { Typography, Button, Grid, ButtonGroup } from '@material-ui/core';
 import '../Animations.css';
 import dash from '../img/dash.png';
 import events from '../img/events.png';
@@ -8,140 +7,118 @@ import registerIncome from '../img/registerIncome.png';
 import registers from '../img/registers.png';
 import income from '../img/income.png';
 import outcome from '../img/outcome.png';
-import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 const styles = {
-    images: {
-        width: "100%",
-        height: "100%"
-    },
-    box: {
-        width: "50%",
-    },
     zoom: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "100%",
         backgroundColor: "#102641"
     }
 }
 
 export default function SystemCarousel() {
-    const [zoom, setZoom] = useState({
-        state: false,
-        id: ""
-    });
+    const images = [
+        {
+            image: dash, id: 1
+        },
+        {
+            image: events, id: 2
+        },
+        {
+            image: income, id: 3
+        },
+        {
+            image: outcome, id: 4
+        },
+        {
+            image: registerIncome, id: 5
+        },
+        {
+            image: registers, id: 6
+        }
+    ]
 
-    const handleZoomImage = (state, picToShow) => {
-        setZoom({
-            ...state,
-            state,
-            picToShow
-        })
+    const [image, setImage] = useState({
+        img: dash,
+        id: 1
+    })
+
+    const nextImage = (id) => {
+
+        const newId = id + 1;
+
+        if (newId === images.length + 1) {
+            setImage({
+                ...image,
+                img: dash,
+                id: 1
+            })
+        } else {
+            images.forEach(i => {
+                if (newId === i.id) {
+                    setImage({
+                        ...image,
+                        img: i.image,
+                        id: i.id
+                    })
+                }
+            })
+
+        }
     }
 
-    const context = useContext(AppContext);
+    const previousImage = (id) => {
+
+        const newId = id - 1;
+
+        if (newId < 1) {
+            setImage({
+                ...image,
+                img: registers,
+                id: 6
+            })
+        } else {
+            images.forEach(i => {
+                if (newId === i.id) {
+                    setImage({
+                        ...image,
+                        img: i.image,
+                        id: i.id
+                    })
+                }
+            })
+        }
+    }
 
     return (
-        <>
-            <Typography style={{ margin: 30 }}>
-                This was a development for a company in Rosario, Argentina. The client needs, were: listing products, have a client's agenda, set events with notifications, monthly control of sales and losses, print payment vouchers, etc.
-            </Typography>
-            <Grid container item xs={12}>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, outcome)}
-                    onMouseOver={() => handleZoomImage(true, "outcome")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "outcome" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${outcome}`} alt="" />
-                    }
-                </Grid>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, dash)}
-                    onMouseOver={() => handleZoomImage(true, "dash")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "dash" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${dash}`} alt="" />
-                    }
-                </Grid>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, registers)}
-                    onMouseOver={() => handleZoomImage(true, "registers")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "registers" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${registers}`} alt="" />
-                    }
-                </Grid>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, income)}
-                    onMouseOver={() => handleZoomImage(true, "income")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "income" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${income}`} alt="" />
-                    }
-                </Grid>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, events)}
-                    onMouseOver={() => handleZoomImage(true, "events")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "events" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${events}`} alt="" />
-                    }
-                </Grid>
-                <Grid item xs={12} sm={6} xl={6}
-                    onClick={() => context.handleOpenModal(true, registerIncome)}
-                    onMouseOver={() => handleZoomImage(true, "registerIncome")}
-                    onMouseLeave={() => handleZoomImage(false, "")}
-                >
-                    {
-                        zoom.state && zoom.picToShow === "registerIncome" ? (
-                            <div style={styles.zoom}>
-                                <Tooltip title="Zoom">
-                                    <ZoomInIcon style={{ background: "grey", borderRadius: 40, padding: 20, color: "black", border: "2px solid black", size: "100px" }} />
-                                </Tooltip>
-                            </div>
-                        ) : <img style={styles.images} src={`${registerIncome}`} alt="" />
-                    }
-                </Grid>
 
+
+        <Grid item xs={12} style={{ display: "flex" }}>
+            <Grid item xs={1}>
+                <Button
+                    onClick={() => previousImage(image.id)}
+                >
+                    <ArrowLeftIcon />
+                </Button>
             </Grid>
-        </>
+
+            <Grid xs={8}>
+                <img src={image.img} style={{ width: "100%" }} />
+            </Grid>
+
+            <Grid item xs={1}>
+                <Button
+                    onClick={() => nextImage(image.id)}
+                >
+                    <ArrowRightIcon />
+                </Button>
+            </Grid>
+        </Grid>
+
     )
 }
+

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Grid, AppBar, Button } from '@material-ui/core';
+import { Tabs, Tab, Grid, AppBar, Button, ButtonGroup } from '@material-ui/core';
 import Website from './MyWebsiteCarousel.js';
 import System from './SystemCarousel.js';
 
@@ -20,36 +20,54 @@ export default function TabPanel(props) {
             </AppBar>
             <Projects value={value} id={0}>
                 <System />
+                <ButtonGroup variant="contained" color="primary" fullWidth>
+                    <Button
+                        onClick={() => console.log('anda')}
+                    >
+                        Github
+                </Button>
+                    <Button
+                        onClick={() => props.showProjects(false)}
+                    >
+                        Go back
+                </Button>
+                </ButtonGroup>
             </Projects>
             <Projects value={value} id={1}>
                 <Website />
-            </Projects>
-            <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                onClick={() => props.showProjects(false)}
-            >
-                Go back
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => console.log('anda')}
+                >
+                    Github
                 </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => props.showProjects(false)}
+                >
+                    Go back
+                </Button>
+            </Projects>
+
         </Grid>
     )
 }
 
 function Projects(props) {
     const { id, value, children } = props;
-    console.log(id, value, children)
 
     return (
-        <div style={{ width: "100%" }}>
+        <>
             {
                 value === id ? (
-                    <p>
+                    <Grid container item xs={12} style={{ background: "white" }}>
                         {children}
-                    </p>
+                    </Grid>
                 ) : null
             }
-        </div>
+        </>
     )
 }
 
