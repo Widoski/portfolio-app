@@ -6,7 +6,6 @@ import '../Animations.css';
 const styles = {
     primarySection: {
         height: 500,
-        backgroundColor: "#102641",
         color: "#fff",
         display: "flex",
         alignItems: "center"
@@ -60,6 +59,9 @@ export default function PrimarySection() {
 
     return (
         <Grid item xs={12} style={styles.primarySection}>
+            <div className="bg"></div>
+            <div className="bg bg2"></div>
+            <div className="bg bg3"></div>
             <Slide in={!trigger}>
                 <AppBar position="fixed" style={styles[navRef.current]}>
                     <Toolbar style={styles.navigation}>

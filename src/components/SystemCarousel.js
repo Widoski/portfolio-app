@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Button, Grid, ButtonGroup, Paper } from '@material-ui/core';
+import { Button, Grid, ButtonGroup, Typography } from '@material-ui/core';
 import '../Animations.css';
 import dash from '../img/dash.png';
 import events from '../img/events.png';
@@ -112,6 +112,23 @@ export default function SystemCarousel() {
                 >
                     <ArrowRightIcon />
                 </Button>
+            </div>
+            <ButtonGroup variant="contained" color="primary" fullWidth>
+                <Button
+                //onClick={() => window.open("https://github.com/Widoski/system-app")}
+                >
+                    Github
+                </Button>
+                <Button
+                //onClick={() => props.showProjects(false)}
+                >
+                    Go back
+                </Button>
+            </ButtonGroup>
+            <div>
+                <Typography>
+
+                </Typography>
             </div>
         </Grid>
     )

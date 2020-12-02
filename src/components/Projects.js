@@ -20,33 +20,9 @@ export default function TabPanel(props) {
             </AppBar>
             <Projects value={value} id={0}>
                 <System />
-                <ButtonGroup variant="contained" color="primary" fullWidth>
-                    <Button
-                        onClick={() => window.open("https://github.com/Widoski/system-app")}
-                    >
-                        Github
-                </Button>
-                    <Button
-                        onClick={() => props.showProjects(false)}
-                    >
-                        Go back
-                </Button>
-                </ButtonGroup>
             </Projects>
             <Projects value={value} id={1}>
                 <Website />
-                <ButtonGroup variant="contained" color="primary" fullWidth>
-                    <Button
-                        onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
-                    >
-                        Github
-                </Button>
-                    <Button
-                        onClick={() => props.showProjects(false)}
-                    >
-                        Go back
-                </Button>
-                </ButtonGroup>
             </Projects>
         </Grid>
     )
