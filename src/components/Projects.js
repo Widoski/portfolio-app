@@ -13,7 +13,7 @@ export default function TabPanel(props) {
     return (
         <Grid item xs={12} style={{ background: "#f5f5f5" }}>
             <AppBar position="static" color="primary">
-                <Tabs value={value} onChange={handleChange} centered={true} indicatorColor="inherit">
+                <Tabs value={value} onChange={handleChange} centered={true}>
                     <Tab label="Project 1" value={0} />
                     <Tab label="Project 2" value={1} />
                 </Tabs>

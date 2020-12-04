@@ -84,7 +84,7 @@ export default function App() {
                             open={openModal.state}
                             keepMounted
                             onClose={() => setOpenModal({ ...openModal, state: false, fileToShow: '' })}
-                            maxWidth="md"
+                            maxWidth="xl"
                         >
                             <DialogContent>
                                 <img alt="" style={{ width: "100%" }} src={openModal.fileToShow} />

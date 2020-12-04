@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Grid, Typography } from '@material-ui/core';
+import React, { useState, useContext } from 'react';
+import { Button, Grid, Typography, ButtonGroup } from '@material-ui/core';
 import '../Animations.css';
 import dash from '../img/dash.png';
 import events from '../img/events.png';
@@ -10,8 +10,11 @@ import outcome from '../img/outcome.png';
 import systemVideo from '../img/system-app.mp4';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import AppContext from '../AppContext';
 
 export default function SystemCarousel(props) {
+    const context = useContext(AppContext);
+
     const images = [
         {
             image: "", id: 1
@@ -128,15 +131,29 @@ export default function SystemCarousel(props) {
                     <ArrowRightIcon />
                 </Button>
             </div>
-
-            <Button
-                fullWidth
-                color="primary"
-                variant="contained"
-                onClick={() => props.showProjects(false)}
-            >
-                Go back
-            </Button>
+            {
+                image.id === 1 ? (
+                    <Button
+                        fullWidth
+                        color="primary"
+                        variant="contained"
+                        onClick={() => props.showProjects(false)}
+                    >
+                        Go back
+                    </Button>
+                ) : <ButtonGroup fullWidth color="primary" variant="contained">
+                        <Button
+                            onClick={() => context.handleOpenModal(true, image.img)}
+                        >
+                            Zoom in
+                        </Button>
+                        <Button
+                            onClick={() => props.showProjects(false)}
+                        >
+                            Go back
+                        </Button>
+                    </ButtonGroup>
+            }
         </Grid >
     )
 }
