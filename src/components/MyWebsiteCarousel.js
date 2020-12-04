@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Grid, ButtonGroup } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import '../Animations.css';
 import header from '../img/header.png';
 import footer from '../img/footer.png';
@@ -9,17 +9,7 @@ import about from '../img/about.png';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const styles = {
-    zoom: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        backgroundColor: "#102641"
-    }
-}
-
-export default function SystemCarousel() {
+export default function SystemCarousel(props) {
     const images = [
         {
             image: header, id: 1
@@ -92,6 +82,18 @@ export default function SystemCarousel() {
 
     return (
         <Grid item xs={12}>
+            <Typography variant="subtitle1" style={{ margin: 20, textAlign: "center" }}>
+                This is my website, wich you're currently visiting. Technologies that I used: React (hooks, context), Material UI (grid and components), CSS and Flexbox.
+            </Typography>
+
+            <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
+            >
+                See the code on github
+            </Button>
             <div item style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
                     onClick={() => previousImage(image.id)}
@@ -100,7 +102,7 @@ export default function SystemCarousel() {
                     <ArrowLeftIcon />
                 </Button>
                 <div style={{ width: "100%", backgroundColor: "white" }} >
-                    <img src={image.img} style={{ width: "100%" }} />
+                    <img src={image.img} style={{ width: "100%" }} alt="" />
                 </div>
                 <Button
                     onClick={() => nextImage(image.id)}
@@ -109,18 +111,14 @@ export default function SystemCarousel() {
                     <ArrowRightIcon />
                 </Button>
             </div>
-            <ButtonGroup variant="contained" color="primary" fullWidth>
-                <Button
-                //onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
-                >
-                    Github
-                </Button>
-                <Button
-                //onClick={() => props.showProjects(false)}
-                >
-                    Go back
-                </Button>
-            </ButtonGroup>
+            <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                onClick={() => props.showProjects(false)}
+            >
+                Go back
+            </Button>
         </Grid>
     )
 }

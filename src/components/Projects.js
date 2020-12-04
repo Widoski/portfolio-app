@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Grid, AppBar, Button, ButtonGroup } from '@material-ui/core';
+import { Tabs, Tab, Grid, AppBar } from '@material-ui/core';
 import Website from './MyWebsiteCarousel.js';
 import System from './SystemCarousel.js';
 
@@ -19,10 +19,10 @@ export default function TabPanel(props) {
                 </Tabs>
             </AppBar>
             <Projects value={value} id={0}>
-                <System />
+                <System showProjects={props.showProjects} />
             </Projects>
             <Projects value={value} id={1}>
-                <Website />
+                <Website showProjects={props.showProjects} />
             </Projects>
         </Grid>
     )

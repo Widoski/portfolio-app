@@ -85,17 +85,25 @@ export default function PrimarySection() {
             </Slide>
             <Grid container item style={styles.primaryText}>
                 <Grid item xs={12} sm={5} lg={5}>
-                    <Typography variant="h4" style={{ paddingBottom: 20, fontWeight: "bold", letterSpacing: 2 }}>
+                    <Typography variant="h4" style={{ paddingBottom: 20, fontWeight: "bold", letterSpacing: 2 }}
+                    >
                         DIEGO OREFICI
-							</Typography>
-                    <Typography variant="button" style={{ fontWeight: "bold", letterSpacing: 2 }}>
+					</Typography>
+                    <Typography variant="button" style={{ fontWeight: "bold", letterSpacing: 2 }}
+                    >
                         DEVELOPER
-							</Typography>
+					</Typography>
                 </Grid>
                 <Grid item xs={12} sm={5} lg={5} style={{ borderLeft: "2px solid white", marginTop: 40 }}>
                     <div style={{ marginLeft: 20 }}>
-                        <Typography variant="button" style={{ fontWeight: "bold", letterSpacing: 6, fontSize: 20 }}>Hi there and welcome to my website</Typography>
-                        <Typography variant="subtitle1" style={{ letterSpacing: 1 }}>My name is Diego Orefici and I'm a Frontend Developer. Here you can check some of my skills, habilities and experience. ¡Thanks for stopping by! </Typography>
+                        <Typography variant="button" style={{ fontWeight: "bold", letterSpacing: 6, fontSize: 20 }}
+                        >
+                            Hi there and welcome to my website
+                        </Typography>
+                        <Typography variant="subtitle1" style={{ letterSpacing: 1 }}
+                        >
+                            My name is Diego Orefici and I'm a Frontend Developer. Here you can check some of my skills, habilities and experience. ¡Thanks for stopping by!
+                        </Typography>
                     </div>
                 </Grid>
             </Grid>

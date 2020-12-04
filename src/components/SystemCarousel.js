@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Grid, ButtonGroup, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import '../Animations.css';
 import dash from '../img/dash.png';
 import events from '../img/events.png';
@@ -7,43 +7,37 @@ import registerIncome from '../img/registerIncome.png';
 import registers from '../img/registers.png';
 import income from '../img/income.png';
 import outcome from '../img/outcome.png';
+import systemVideo from '../img/system-app.mp4';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const styles = {
-    zoom: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        backgroundColor: "#102641"
-    }
-}
-
-export default function SystemCarousel() {
+export default function SystemCarousel(props) {
     const images = [
         {
-            image: dash, id: 1
+            image: "", id: 1
         },
         {
-            image: events, id: 2
+            image: dash, id: 2
         },
         {
-            image: income, id: 3
+            image: events, id: 3
         },
         {
-            image: outcome, id: 4
+            image: income, id: 4
         },
         {
-            image: registerIncome, id: 5
+            image: outcome, id: 5
         },
         {
-            image: registers, id: 6
+            image: registerIncome, id: 6
+        },
+        {
+            image: registers, id: 7
         }
     ]
 
     const [image, setImage] = useState({
-        img: dash,
+        img: "",
         id: 1
     })
 
@@ -54,7 +48,7 @@ export default function SystemCarousel() {
         if (newId === images.length + 1) {
             setImage({
                 ...image,
-                img: dash,
+                img: "",
                 id: 1
             })
         } else {
@@ -79,7 +73,7 @@ export default function SystemCarousel() {
             setImage({
                 ...image,
                 img: registers,
-                id: 6
+                id: 7
             })
         } else {
             images.forEach(i => {
@@ -96,16 +90,37 @@ export default function SystemCarousel() {
 
     return (
         <Grid item xs={12}>
-            <div item style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
+            <Typography variant="subtitle1" style={{ margin: 20, textAlign: "center" }}>
+                System developed for a company in Argentina, where events can be scheduled with notifications, products can be listed, customer agenda, sales receipts can be printed. Consult sales and expense records. Technologies that I used: React (hooks, context, react router dom), Material UI, CSS and Flexbox.
+            </Typography>
+
+            <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                onClick={() => window.open("https://github.com/Widoski/system-app")}
+            >
+                See the code on github
+            </Button>
+
+            <div style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
                     onClick={() => previousImage(image.id)}
                     style={{ height: 60, borderRadius: "60%" }}
                 >
                     <ArrowLeftIcon />
                 </Button>
-                <div style={{ width: "100%", backgroundColor: "white" }} >
-                    <img src={image.img} style={{ width: "100%" }} />
-                </div>
+                {
+                    image.id === 1 ? (
+                        <div>
+                            <video poster={dash} controls muted style={{ width: "100%" }}>
+                                <source src={systemVideo} type="video/mp4" />
+                            </video>
+                        </div>
+                    ) : <div style={{ width: "100%" }} >
+                            <img src={image.img} style={{ width: "100%" }} alt="" />
+                        </div>
+                }
                 <Button
                     onClick={() => nextImage(image.id)}
                     style={{ height: 60, borderRadius: "60%" }}
@@ -113,24 +128,16 @@ export default function SystemCarousel() {
                     <ArrowRightIcon />
                 </Button>
             </div>
-            <ButtonGroup variant="contained" color="primary" fullWidth>
-                <Button
-                //onClick={() => window.open("https://github.com/Widoski/system-app")}
-                >
-                    Github
-                </Button>
-                <Button
-                //onClick={() => props.showProjects(false)}
-                >
-                    Go back
-                </Button>
-            </ButtonGroup>
-            <div>
-                <Typography>
 
-                </Typography>
-            </div>
-        </Grid>
+            <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                onClick={() => props.showProjects(false)}
+            >
+                Go back
+            </Button>
+        </Grid >
     )
 }
 

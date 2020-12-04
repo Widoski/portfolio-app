@@ -16,7 +16,7 @@ const styles = {
 }
 
 export default function SkillsSection() {
-    const [projects, setProjects] = useState(true);
+    const [projects, setProjects] = useState(false);
 
     const [backgroundColor, setBackgroundColor] = useState(false);
 
