@@ -34,7 +34,8 @@ export default function SkillsSection() {
     return (
         <Grid
             id="skills"
-            container item xs={12} style={styles.skills}>
+            container item xs={12} style={styles.skills}
+        >
             {
                 projects ? (
                     <Projects showProjects={showProjects} />
@@ -171,7 +172,7 @@ export default function SkillsSection() {
                                 style={{
                                     backgroundColor: "#102641", minHeight: 180, margin: 10, flex: 1, display: "flex", alignItems: "center", justifyContent: "center"
                                 }}>
-                                    <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}>PROYECTS</Typography>
+                                    <Typography className="flash" variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}>PROYECTS</Typography>
                                 </Card>
                         }
                     </>

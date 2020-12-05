@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Grid, Typography, ButtonGroup } from '@material-ui/core';
+import { Button, ButtonGroup, Grid, Typography } from '@material-ui/core';
 import '../Animations.css';
 import header from '../img/header.png';
 import footer from '../img/footer.png';
@@ -8,6 +8,9 @@ import skills from '../img/skills.png';
 import about from '../img/about.png';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import AppContext from '../AppContext';
 
 export default function SystemCarousel(props) {
@@ -84,19 +87,10 @@ export default function SystemCarousel(props) {
     }
 
     return (
-        <Grid item xs={12}>
+        <Grid item xs={12} className="fade">
             <Typography variant="subtitle1" style={{ margin: 20, textAlign: "center" }}>
                 This is my website, wich you're currently visiting. Technologies that I used: React (hooks, context), Material UI (grid and components), CSS and Flexbox.
             </Typography>
-
-            <Button
-                fullWidth
-                color="primary"
-                variant="contained"
-                onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
-            >
-                See the code on github
-            </Button>
             <div item style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
                     onClick={() => previousImage(image.id)}
@@ -114,17 +108,22 @@ export default function SystemCarousel(props) {
                     <ArrowRightIcon />
                 </Button>
             </div>
-            <ButtonGroup fullWidth color="primary" variant="contained">
-                <Button
-                    onClick={() => context.handleOpenModal(true, image.img)}
-                >
-                    Zoom in
-            </Button>
+            <ButtonGroup style={{ display: "flex", justifyContent: "center" }}>
                 <Button
                     onClick={() => props.showProjects(false)}
                 >
-                    Go back
-            </Button>
+                    <ArrowBackIcon color="primary" />
+                </Button>
+                <Button
+                    onClick={() => window.open("https://github.com/Widoski/portfolio-app")}
+                >
+                    <GitHubIcon color="primary" />
+                </Button>
+                <Button
+                    onClick={() => context.handleOpenModal(true, image.img)}
+                >
+                    <ZoomInIcon color="primary" />
+                </Button>
             </ButtonGroup>
         </Grid>
     )

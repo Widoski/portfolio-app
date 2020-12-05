@@ -50,3 +50,52 @@
         transform: translateX(25%);
     }
 }
+
+.flash {
+    animation-name: flash;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: collapse;
+    }
+}
+
+.titles {
+    animation-name: titles;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    position: relative;
+}
+
+@keyframes titles {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

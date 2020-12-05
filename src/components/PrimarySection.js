@@ -32,6 +32,12 @@ const styles = {
         fontWeight: "bold",
         letterSpacing: 3,
         margin: 10,
+    },
+    link: {
+        textDecoration: "none",
+        color: "#f5f5f5",
+        fontWeight: "bold",
+        letterSpacing: 2
     }
 }
 
@@ -66,26 +72,26 @@ export default function PrimarySection() {
                 <AppBar position="fixed" style={styles[navRef.current]}>
                     <Toolbar style={styles.navigation}>
                         <Typography variant="button">
-                            <Box fontWeight="bold" letterSpacing={2} pl={5} mt={1} ml={5}>
-                                <Link href="#about" style={{ textDecoration: "none", color: "#fff" }} className="underline">ABOUT</Link>
+                            <Box pl={5} mt={1} ml={5}>
+                                <Link href="#about" style={styles.link} className="underline">ABOUT</Link>
                             </Box>
                         </Typography>
                         <Typography variant="button">
-                            <Box fontWeight="bold" letterSpacing={2} mt={1} ml={5}>
-                                <Link href="#skills" style={{ textDecoration: "none", color: "#fff" }} className="underline">SKILLS</Link>
+                            <Box mt={1} ml={5}>
+                                <Link href="#skills" style={styles.link} className="underline">SKILLS</Link>
                             </Box>
                         </Typography>
                         <Typography variant="button">
-                            <Box fontWeight="bold" letterSpacing={2} pl={5} pr={5} mt={1} fontStyle="">
-                                <Link href="#contact" style={{ textDecoration: "none", color: "#fff" }} className="underline">CONTACT</Link>
+                            <Box pl={5} pr={5} mt={1}>
+                                <Link href="#contact" style={styles.link} className="underline">CONTACT</Link>
                             </Box>
                         </Typography>
                     </Toolbar>
                 </AppBar>
             </Slide>
-            <Grid container item style={styles.primaryText}>
+            <Grid container item style={styles.primaryText} className="titles">
                 <Grid item xs={12} sm={5} lg={5}>
-                    <Typography variant="h4" style={{ paddingBottom: 20, fontWeight: "bold", letterSpacing: 2 }}
+                    <Typography variant="h4" style={{ paddingBottom: 5, fontWeight: "bold", letterSpacing: 2 }}
                     >
                         DIEGO OREFICI
 					</Typography>
@@ -102,7 +108,7 @@ export default function PrimarySection() {
                         </Typography>
                         <Typography variant="subtitle1" style={{ letterSpacing: 1 }}
                         >
-                            My name is Diego Orefici and I'm a Frontend Developer. Here you can check some of my skills, habilities and experience. ¡Thanks for stopping by!
+                            Here you can check some of my skills, habilities and experience. ¡Thanks for stopping by!
                         </Typography>
                     </div>
                 </Grid>

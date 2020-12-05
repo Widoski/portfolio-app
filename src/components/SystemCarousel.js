@@ -10,6 +10,9 @@ import outcome from '../img/outcome.png';
 import systemVideo from '../img/system-app.mp4';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import AppContext from '../AppContext';
 
 export default function SystemCarousel(props) {
@@ -92,19 +95,11 @@ export default function SystemCarousel(props) {
     }
 
     return (
-        <Grid item xs={12}>
+        <Grid item xs={12} className="fade">
             <Typography variant="subtitle1" style={{ margin: 20, textAlign: "center" }}>
                 System developed for a company in Argentina, where events can be scheduled with notifications, products can be listed, customer agenda, sales receipts can be printed. Consult sales and expense records. Technologies that I used: React (hooks, context, react router dom), Material UI, CSS and Flexbox.
             </Typography>
 
-            <Button
-                fullWidth
-                color="primary"
-                variant="contained"
-                onClick={() => window.open("https://github.com/Widoski/system-app")}
-            >
-                See the code on github
-            </Button>
 
             <div style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
@@ -116,7 +111,7 @@ export default function SystemCarousel(props) {
                 {
                     image.id === 1 ? (
                         <div>
-                            <video poster={dash} controls muted style={{ width: "100%" }}>
+                            <video poster={dash} controls muted style={{ width: "100%" }} >
                                 <source src={systemVideo} type="video/mp4" />
                             </video>
                         </div>
@@ -133,24 +128,33 @@ export default function SystemCarousel(props) {
             </div>
             {
                 image.id === 1 ? (
-                    <Button
-                        fullWidth
-                        color="primary"
-                        variant="contained"
-                        onClick={() => props.showProjects(false)}
-                    >
-                        Go back
-                    </Button>
-                ) : <ButtonGroup fullWidth color="primary" variant="contained">
-                        <Button
-                            onClick={() => context.handleOpenModal(true, image.img)}
-                        >
-                            Zoom in
-                        </Button>
+                    <ButtonGroup style={{ display: "flex", justifyContent: "center" }}>
                         <Button
                             onClick={() => props.showProjects(false)}
                         >
-                            Go back
+                            <ArrowBackIcon color="primary" />
+                        </Button>
+                        <Button
+                            onClick={() => window.open("https://github.com/Widoski/system-app")}
+                        >
+                            <GitHubIcon color="primary" />
+                        </Button>
+                    </ButtonGroup>
+                ) : <ButtonGroup style={{ display: "flex", justifyContent: "center" }}>
+                        <Button
+                            onClick={() => props.showProjects(false)}
+                        >
+                            <ArrowBackIcon color="primary" />
+                        </Button>
+                        <Button
+                            onClick={() => window.open("https://github.com/Widoski/system-app")}
+                        >
+                            <GitHubIcon color="primary" />
+                        </Button>
+                        <Button
+                            onClick={() => context.handleOpenModal(true, image.img)}
+                        >
+                            <ZoomInIcon color="primary" />
                         </Button>
                     </ButtonGroup>
             }
