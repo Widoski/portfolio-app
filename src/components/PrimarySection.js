@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, Box, AppBar, Toolbar, Slide, Link } from '@material-ui/core';
+import { Grid, Typography, Box, AppBar, Toolbar, Slide, Link, Button } from '@material-ui/core';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import MenuIcon from '@material-ui/icons/Menu';
 import '../Animations.css';
+import '../MediaQueries.css';
 
 const styles = {
     primarySection: {
@@ -20,12 +22,6 @@ const styles = {
         display: "flex",
         justifyContent: "flex-end",
     },
-    appBarTransparent: {
-        backgroundColor: 'transparent'
-    },
-    appBarSolid: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)'
-    },
     anchor: {
         textDecoration: "none",
         color: "black",
@@ -43,21 +39,21 @@ const styles = {
 
 export default function PrimarySection() {
     const trigger = useScrollTrigger();
-    const [navBackground, setNavBackground] = useState('appBarTransparent')
-    const navRef = React.useRef()
-    navRef.current = navBackground
+    const [navBackground, setNavBackground] = useState('transparent');
 
     useEffect(() => {
         const handleScroll = () => {
             const show = window.scrollY > 310
 
             if (show) {
-                setNavBackground('appBarSolid');
+                setNavBackground('rgba(0, 0, 0, 0.5)');
             } else {
-                setNavBackground('appBarTransparent');
+                setNavBackground('transparent');
             }
         }
+
         document.addEventListener('scroll', handleScroll)
+
         return () => {
             document.removeEventListener('scroll', handleScroll)
         }
@@ -69,8 +65,11 @@ export default function PrimarySection() {
             <div className="bg bg2"></div>
             <div className="bg bg3"></div>
             <Slide in={!trigger}>
-                <AppBar position="fixed" style={styles[navRef.current]}>
-                    <Toolbar style={styles.navigation}>
+                <AppBar position="fixed" style={{ backgroundColor: navBackground }}>
+                    <Button style={{ display: "none", color: "#f5f5f5" }} className="menu">
+                        <MenuIcon />
+                    </Button>
+                    <Toolbar style={styles.navigation} className="appBar">
                         <Typography variant="button">
                             <Box pl={5} mt={1} ml={5}>
                                 <Link href="#about" style={styles.link} className="underline">ABOUT</Link>

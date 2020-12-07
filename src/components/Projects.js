@@ -28,10 +28,8 @@ export default function TabPanel(props) {
     )
 }
 
-function Projects(props) {
-    const { id, value, children } = props;
-
-    return (
+const Projects = ({ id, value, children }) =>
+    (
         <>
             {
                 value === id ? (
@@ -42,5 +40,5 @@ function Projects(props) {
             }
         </>
     )
-}
+
 

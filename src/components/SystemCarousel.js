@@ -18,79 +18,27 @@ import AppContext from '../AppContext';
 export default function SystemCarousel(props) {
     const context = useContext(AppContext);
 
-    const images = [
-        {
-            image: "", id: 1
-        },
-        {
-            image: dash, id: 2
-        },
-        {
-            image: events, id: 3
-        },
-        {
-            image: income, id: 4
-        },
-        {
-            image: outcome, id: 5
-        },
-        {
-            image: registerIncome, id: 6
-        },
-        {
-            image: registers, id: 7
-        }
-    ]
+    const images = [systemVideo, dash, events, income, outcome, registerIncome, registers];
 
-    const [image, setImage] = useState({
-        img: "",
-        id: 1
-    })
+    const [image, setImage] = useState(images[0])
 
-    const nextImage = (id) => {
+    const nextImage = (idx) => {
+        const nextImageIdx = idx + 1;
 
-        const newId = id + 1;
-
-        if (newId === images.length + 1) {
-            setImage({
-                ...image,
-                img: "",
-                id: 1
-            })
+        if (nextImageIdx === images.length) {
+            setImage(images[0]);
         } else {
-            images.forEach(i => {
-                if (newId === i.id) {
-                    setImage({
-                        ...image,
-                        img: i.image,
-                        id: i.id
-                    })
-                }
-            })
-
+            setImage(images[nextImageIdx]);
         }
     }
 
-    const previousImage = (id) => {
+    const previousImage = (idx) => {
+        const previousImageIdx = idx - 1;
 
-        const newId = id - 1;
-
-        if (newId < 1) {
-            setImage({
-                ...image,
-                img: registers,
-                id: 7
-            })
+        if (previousImageIdx < 0) {
+            setImage(images[images.length - 1]);
         } else {
-            images.forEach(i => {
-                if (newId === i.id) {
-                    setImage({
-                        ...image,
-                        img: i.image,
-                        id: i.id
-                    })
-                }
-            })
+            setImage(images[previousImageIdx]);
         }
     }
 
@@ -103,31 +51,31 @@ export default function SystemCarousel(props) {
 
             <div style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
-                    onClick={() => previousImage(image.id)}
-                    style={{ height: 60, borderRadius: "60%" }}
+                    onClick={() => previousImage(images.indexOf(image))}
+                    style={{ height: 60, borderRadius: "60%", margin: 10 }}
                 >
                     <ArrowLeftIcon />
                 </Button>
                 {
-                    image.id === 1 ? (
+                    image === images[0] ? (
                         <div>
                             <video poster={dash} controls muted style={{ width: "100%" }} >
                                 <source src={systemVideo} type="video/mp4" />
                             </video>
                         </div>
                     ) : <div style={{ width: "100%" }} >
-                            <img src={image.img} style={{ width: "100%" }} alt="" />
+                            <img src={image} style={{ width: "100%" }} alt="" />
                         </div>
                 }
                 <Button
-                    onClick={() => nextImage(image.id)}
-                    style={{ height: 60, borderRadius: "60%" }}
+                    onClick={() => nextImage(images.indexOf(image))}
+                    style={{ height: 60, borderRadius: "60%", margin: 10 }}
                 >
                     <ArrowRightIcon />
                 </Button>
             </div>
             {
-                image.id === 1 ? (
+                image === images[0] ? (
                     <ButtonGroup style={{ display: "flex", justifyContent: "center" }}>
                         <Button
                             onClick={() => props.showProjects(false)}
@@ -152,7 +100,7 @@ export default function SystemCarousel(props) {
                             <GitHubIcon color="primary" />
                         </Button>
                         <Button
-                            onClick={() => context.handleOpenModal(true, image.img)}
+                            onClick={() => context.handleOpenModal(true, image)}
                         >
                             <ZoomInIcon color="primary" />
                         </Button>
