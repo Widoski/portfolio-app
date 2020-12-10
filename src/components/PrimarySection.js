@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, Box, AppBar, Toolbar, Slide, Link, Button } from '@material-ui/core';
+import { Grid, Typography, Box, AppBar, Toolbar, Slide, Link, Button, Drawer, ListItem, List } from '@material-ui/core';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import MenuIcon from '@material-ui/icons/Menu';
 import '../Animations.css';
@@ -19,27 +19,45 @@ const styles = {
         justifyContent: "center",
     },
     navigation: {
+        width: "100%",
         display: "flex",
         justifyContent: "flex-end",
-    },
-    anchor: {
-        textDecoration: "none",
-        color: "black",
-        fontWeight: "bold",
-        letterSpacing: 3,
-        margin: 10,
     },
     link: {
         textDecoration: "none",
         color: "#f5f5f5",
         fontWeight: "bold",
         letterSpacing: 2
-    }
+    },
+    list: {
+        width: 250,
+        height: 700,
+        backgroundColor: "#0B141A"
+    },
+    listLink: {
+        textDecoration: "none",
+        color: "#f5f5f5",
+        fontWeight: "bold",
+        letterSpacing: 2,
+        borderBottom: "1px solid #f5f5f5",
+        width: "100%",
+        margin: 15
+    },
 }
 
 export default function PrimarySection() {
     const trigger = useScrollTrigger();
     const [navBackground, setNavBackground] = useState('transparent');
+
+    const [drawerState, setDrawerState] = useState(false);
+    const anchor = 'left';
+
+    const toggleDrawer = (anchor, open) => {
+        setDrawerState({
+            ...drawerState,
+            [anchor]: open
+        });
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,6 +77,19 @@ export default function PrimarySection() {
         }
     }, [])
 
+    const [listItemBackground, setListItemBackground] = useState({
+        about: "",
+        skills: "",
+        contact: ""
+    });
+
+    const changeBackground = (sectionName, color) => {
+        setListItemBackground({
+            ...listItemBackground,
+            [sectionName]: color
+        })
+    }
+
     return (
         <Grid item xs={12} style={styles.primarySection}>
             <div className="bg"></div>
@@ -66,25 +97,57 @@ export default function PrimarySection() {
             <div className="bg bg3"></div>
             <Slide in={!trigger}>
                 <AppBar position="fixed" style={{ backgroundColor: navBackground }}>
-                    <Button style={{ display: "none", color: "#f5f5f5" }} className="menu">
-                        <MenuIcon />
-                    </Button>
-                    <Toolbar style={styles.navigation} className="appBar">
-                        <Typography variant="button">
-                            <Box pl={5} mt={1} ml={5}>
-                                <Link href="#about" style={styles.link} className="underline">ABOUT</Link>
-                            </Box>
-                        </Typography>
-                        <Typography variant="button">
-                            <Box mt={1} ml={5}>
-                                <Link href="#skills" style={styles.link} className="underline">SKILLS</Link>
-                            </Box>
-                        </Typography>
-                        <Typography variant="button">
-                            <Box pl={5} pr={5} mt={1}>
-                                <Link href="#contact" style={styles.link} className="underline">CONTACT</Link>
-                            </Box>
-                        </Typography>
+                    <Toolbar>
+                        <div style={styles.navigation} className="navBar">
+                            <Typography variant="button">
+                                <Box pl={5} mt={1} ml={5}>
+                                    <Link href="#about" style={styles.link} className="underline">ABOUT</Link>
+                                </Box>
+                            </Typography>
+                            <Typography variant="button">
+                                <Box mt={1} ml={5}>
+                                    <Link href="#skills" style={styles.link} className="underline">SKILLS</Link>
+                                </Box>
+                            </Typography>
+                            <Typography variant="button">
+                                <Box pl={5} pr={5} mt={1}>
+                                    <Link href="#contact" style={styles.link} className="underline">CONTACT</Link>
+                                </Box>
+                            </Typography>
+                        </div>
+                        <div className="burguer" style={{ display: "none" }}>
+                            <Button onClick={() => toggleDrawer(anchor, true)}>
+                                <MenuIcon style={{ color: "f5f5f5" }} />
+                            </Button>
+                            <Drawer open={drawerState[anchor]} onClose={() => toggleDrawer(anchor, false)}>
+                                <List style={styles.list}>
+                                    <ListItem onMouseOver={() => changeBackground("about", "#102641")} style={{ backgroundColor: listItemBackground.about }}
+                                        onMouseLeave={() => changeBackground("about", "")}>
+                                        <Link style={styles.listLink} onClick={() => toggleDrawer(anchor, false)} href="#about">
+                                            <Typography>
+                                                About
+                                            </Typography>
+                                        </Link>
+                                    </ListItem>
+                                    <ListItem onMouseOver={() => changeBackground("skills", "#102641")} style={{ backgroundColor: listItemBackground.skills }}
+                                        onMouseLeave={() => changeBackground("skills", "")}>
+                                        <Link style={styles.listLink} onClick={() => toggleDrawer(anchor, false)} href="#skills">
+                                            <Typography>
+                                                Skills
+                                            </Typography>
+                                        </Link>
+                                    </ListItem>
+                                    <ListItem onMouseOver={() => changeBackground("contact", "#102641")} style={{ backgroundColor: listItemBackground.contact }}
+                                        onMouseLeave={() => changeBackground("contact", "")}>
+                                        <Link style={styles.listLink} onClick={() => toggleDrawer(anchor, false)} href="#contact">
+                                            <Typography>
+                                                Contact
+                                            </Typography>
+                                        </Link>
+                                    </ListItem>
+                                </List>
+                            </Drawer>
+                        </div>
                     </Toolbar>
                 </AppBar>
             </Slide>

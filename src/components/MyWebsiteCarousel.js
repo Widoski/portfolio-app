@@ -13,6 +13,14 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import AppContext from '../AppContext';
 
+const styles = {
+    buttonCarousel: {
+        height: 60,
+        borderRadius: "60%",
+        margin: 10
+    }
+}
+
 export default function SystemCarousel(props) {
     const context = useContext(AppContext);
 
@@ -48,16 +56,17 @@ export default function SystemCarousel(props) {
             <div item style={{ display: "flex", alignItems: "center", marginTop: 10, marginBottom: 10 }}>
                 <Button
                     onClick={() => previousImage(images.indexOf(image))}
-                    style={{ height: 60, borderRadius: "60%", margin: 10 }}
+                    style={styles.buttonCarousel}
                 >
                     <ArrowLeftIcon />
                 </Button>
-                <div style={{ width: "100%", backgroundColor: "white" }} >
+                <div style={{ width: "100%", backgroundColor: "white" }}>
                     <img src={image} style={{ width: "100%" }} alt="" />
                 </div>
                 <Button
                     onClick={() => nextImage(images.indexOf(image))}
-                    style={{ height: 60, borderRadius: "60%", margin: 10 }}
+                    className="fade"
+                    style={styles.buttonCarousel}
                 >
                     <ArrowRightIcon />
                 </Button>

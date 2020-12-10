@@ -27,8 +27,14 @@ export default function SkillsSection() {
         icon: ''
     });
 
+    const [expanded, setExpanded] = useState(false);
+
     const showProjects = (boolean) => {
         setProjects(boolean);
+    }
+
+    const onChangeAccordion = (panel) => (e, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
     }
 
     return (
@@ -41,7 +47,7 @@ export default function SkillsSection() {
                     <Projects showProjects={showProjects} />
                 ) : <>
                         <Grid item xs={12} sm={6} xl={6} style={{ margin: 10 }}>
-                            <Accordion style={{ backgroundColor: "#102641" }}>
+                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel1"} onChange={onChangeAccordion("panel1")}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />} style={styles.accordion}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -98,18 +104,18 @@ export default function SkillsSection() {
                                     </div>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }}>
+                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel2"} onChange={onChangeAccordion("panel2")}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />} style={styles.accordion}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}>STILL EXPLORING</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Typography style={{ color: "#f5f5f5" }} variant="subtitle1" letterSpacing={1}
                                     >
-                                        Node, Express, Loopback, Mongo, Firebase, React Native.
+                                        Node, Express, Loopback, Mongo, Firebase, React Native, Gatsby.
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }}>
+                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel3"} onChange={onChangeAccordion("panel3")}>
                                 <AccordionSummary style={styles.accordion} expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -119,11 +125,11 @@ export default function SkillsSection() {
                                 <AccordionDetails>
                                     <Typography style={{ color: "#f5f5f5" }} variant="subtitle1" letterSpacing={1}
                                     >
-                                        Flexbox, Grid, Material UI, Git, ECMAScript 2016.
+                                        Flexbox, Grid, Material UI, Git.
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }}>
+                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel4"} onChange={onChangeAccordion("panel4")}>
                                 <AccordionSummary style={styles.accordion} expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -179,4 +185,8 @@ export default function SkillsSection() {
             }
         </Grid>
     )
+}
+
+function ShowAccordion(value) {
+
 }

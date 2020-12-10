@@ -63,7 +63,7 @@ export default function SystemCarousel(props) {
                                 <source src={systemVideo} type="video/mp4" />
                             </video>
                         </div>
-                    ) : <div style={{ width: "100%" }} >
+                    ) : <div style={{ width: "100%" }}>
                             <img src={image} style={{ width: "100%" }} alt="" />
                         </div>
                 }

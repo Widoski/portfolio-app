@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    .burguer {
+        display: block;
+    }
+    .navBar {
+        display: none;
+    }
+}
