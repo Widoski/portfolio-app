@@ -8,7 +8,7 @@ import Projects from './Projects';
 const styles = {
     skills: {
         backgroundColor: "#f1f1f1",
-        padding: 60
+        padding: 40
     },
     accordion: {
         backgroundColor: "#282726",
@@ -49,7 +49,7 @@ export default function Skills() {
                 projects ? (
                     <Projects showProjects={showProjects} />
                 ) : <>
-                        <Grid item xs={12} sm={6} xl={6} style={{ margin: 10 }}>
+                        <Grid item xs={12} sm={6} xl={6}>
                             <Accordion style={styles.backgroundAccordion} expanded={expanded === "panel1"} onChange={onChangeAccordion("panel1")}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />} style={styles.accordion}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
@@ -161,7 +161,7 @@ export default function Skills() {
                                 <Card
                                     onMouseOver={() => setBackgroundColor(true)}
                                     onMouseLeave={() => setBackgroundColor(false)}
-                                    style={{ backgroundColor: "#db6400", minHeight: 180, margin: 10, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", justifyContent: "center" }}>
+                                    style={{ backgroundColor: "#db6400", minHeight: 180, margin: 1, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", justifyContent: "center" }}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
                                         ¿WANT TO SEE MY WORK?
@@ -179,7 +179,7 @@ export default function Skills() {
                                 onMouseOver={() => setBackgroundColor(true)}
                                 onMouseLeave={() => setBackgroundColor(false)}
                                 style={{
-                                    backgroundColor: "#102641", minHeight: 180, margin: 10, flex: 1, display: "flex", alignItems: "center", justifyContent: "center"
+                                    backgroundColor: "#102641", minHeight: 180, margin: 1, flex: 1, display: "flex", alignItems: "center", justifyContent: "center"
                                 }}>
                                     <Typography className="flash" variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}>PROYECTS</Typography>
                                 </Card>

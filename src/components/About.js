@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 
 const styles = {
     about: {
-        height: 500,
+        minHeight: 500,
         alignItems: "center",
         textAlign: "center",
         justifyContent: "center",
@@ -18,10 +18,10 @@ export default function AboutSection() {
             id="about"
             container item xs={12} style={styles.about}>
             <Grid item xs={12} sm={9} xl={9}>
-                <Typography variant="h5" style={{ paddingBottom: 40, fontWeight: "bold", letterSpacing: 5 }}>
+                <Typography variant="h5" style={{ paddingTop: 40, fontWeight: "bold", letterSpacing: 5 }}>
                     ABOUT ME
 			    </Typography>
-                <Typography variant="subtitle1" style={{ letterSpacing: 1 }}>
+                <Typography variant="subtitle1" style={{ letterSpacing: 1, padding: 40 }}>
                     <span style={{ fontStyle: "italic" }}
                     >
                         I've been studying and working freelance for about two years. Part of me, recognize this as luck, beyond the big effort that I've made.
