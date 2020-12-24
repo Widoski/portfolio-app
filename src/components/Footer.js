@@ -16,7 +16,7 @@ export default function Footer() {
             <Avatar src={diego} style={{ margin: 20, width: "100px", height: "100px" }} />
             <hr style={{ width: "50%" }} />
             <Typography style={{ paddingTop: 5, color: "#f5f5f5", fontWeight: "lighter" }} variant="subtitle2">
-                Copyright 2020
+                © 2020. Developed by Diego Orefici. All rights, reserved.
             </Typography>
         </Grid>
     )

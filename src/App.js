@@ -4,8 +4,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { Grid, Dialog, DialogContent, Snackbar } from '@material-ui/core';
 import AppContext from './AppContext';
 import PrimarySection from './components/PrimarySection';
-import AboutSection from './components/AboutSection';
-import SkillsSection from './components/SkillsSection';
+import About from './components/About';
+import Skills from './components/Skills';
 import Media from './components/Media';
 import Form from './components/Form';
 import Footer from './components/Footer';
@@ -70,8 +70,8 @@ export default function App() {
             >
                 <Grid container spacing={2}>
                     <PrimarySection />
-                    <AboutSection />
-                    <SkillsSection />
+                    <About />
+                    <Skills />
                     <Grid container item xs={12} style={styles.contactSection}>
                         <Media />
                         <Form />

@@ -1,8 +1,39 @@
-@media (max-width: 768px) {
-    .burguer {
-        display: block;
+@media all and (max-width: 600px) {
+    .nav {
+        display: none;
     }
-    .navBar {
+    .burguer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .principalTitles {
+        text-align: center;
+    }
+    .secondaryTitles {
+        text-align: center;
+        padding-top: 30px;
+    }
+    .hr {
+        display: block;
+        width: 40%;
+        margin-top: 30px;
+    }
+}
+
+@media all and (min-width: 600px) {
+    .burguer {
+        display: none;
+    }
+    .boxSecondaryTitles {
+        border-left: 2px solid white;
+    }
+    .toolbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .hr {
         display: none;
     }
 }

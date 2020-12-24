@@ -13,9 +13,12 @@ const styles = {
     accordion: {
         backgroundColor: "#282726",
     },
+    backgroundAccordion: {
+        backgroundColor: "#373a40"
+    }
 }
 
-export default function SkillsSection() {
+export default function Skills() {
     const [projects, setProjects] = useState(false);
 
     const [backgroundColor, setBackgroundColor] = useState(false);
@@ -47,7 +50,7 @@ export default function SkillsSection() {
                     <Projects showProjects={showProjects} />
                 ) : <>
                         <Grid item xs={12} sm={6} xl={6} style={{ margin: 10 }}>
-                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel1"} onChange={onChangeAccordion("panel1")}>
+                            <Accordion style={styles.backgroundAccordion} expanded={expanded === "panel1"} onChange={onChangeAccordion("panel1")}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />} style={styles.accordion}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -104,7 +107,7 @@ export default function SkillsSection() {
                                     </div>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel2"} onChange={onChangeAccordion("panel2")}>
+                            <Accordion style={styles.backgroundAccordion} expanded={expanded === "panel2"} onChange={onChangeAccordion("panel2")}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />} style={styles.accordion}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}>STILL EXPLORING</Typography>
                                 </AccordionSummary>
@@ -115,7 +118,7 @@ export default function SkillsSection() {
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel3"} onChange={onChangeAccordion("panel3")}>
+                            <Accordion style={styles.backgroundAccordion} expanded={expanded === "panel3"} onChange={onChangeAccordion("panel3")}>
                                 <AccordionSummary style={styles.accordion} expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -129,7 +132,7 @@ export default function SkillsSection() {
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion style={{ backgroundColor: "#102641" }} expanded={expanded === "panel4"} onChange={onChangeAccordion("panel4")}>
+                            <Accordion style={styles.backgroundAccordion} expanded={expanded === "panel4"} onChange={onChangeAccordion("panel4")}>
                                 <AccordionSummary style={styles.accordion} expandIcon={<ExpandMoreIcon style={{ color: "#f5f5f5" }} />}>
                                     <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
                                     >
@@ -185,8 +188,4 @@ export default function SkillsSection() {
             }
         </Grid>
     )
-}
-
-function ShowAccordion(value) {
-
 }
