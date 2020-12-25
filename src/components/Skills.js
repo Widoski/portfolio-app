@@ -14,7 +14,8 @@ const styles = {
         backgroundColor: "#282726",
     },
     backgroundAccordion: {
-        backgroundColor: "#373a40"
+        backgroundColor: "#373a40",
+        margin: 1,
     }
 }
 
