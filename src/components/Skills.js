@@ -162,7 +162,7 @@ export default function Skills() {
                                     onMouseOver={() => setBackgroundColor(true)}
                                     onMouseLeave={() => setBackgroundColor(false)}
                                     style={{ backgroundColor: "#db6400", minHeight: 180, margin: 1, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", justifyContent: "center" }}>
-                                    <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5 }}
+                                    <Typography variant="button" style={{ color: "white", fontWeight: "bold", letterSpacing: 5, padding: 5 }}
                                     >
                                         ¿WANT TO SEE MY WORK?
                                     </Typography>
