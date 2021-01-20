@@ -9,6 +9,10 @@ const theme = createMuiTheme({
             main: '#282726',
         },
     },
+    typography: {
+        fontFamily: "Arial"
+    },
 });
 
 export default theme;
+
